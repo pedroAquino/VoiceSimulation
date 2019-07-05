@@ -35,6 +35,7 @@ const useStyles = makeStyles(theme => ({
         borderRadius: 12,
         position: 'relative',
         marginBottom: 24,
+        textTransform: 'capitalize',
         '&:after': {
             content: "''",
             position: 'absolute',

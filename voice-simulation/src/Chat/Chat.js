@@ -18,7 +18,7 @@ export default function Chat() {
       <ChatContainer>
         {({ chatState, addMessage }) => {
           return (
-            <div>
+            <React.Fragment>
                 <MessageList 
                   {...chatState}
                 />
@@ -33,7 +33,7 @@ export default function Chat() {
                     );
                   }}
                 </SpeechContainer>
-            </div>
+            </React.Fragment>
           )
         }}
       </ChatContainer>
