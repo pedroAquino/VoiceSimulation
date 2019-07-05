@@ -16,12 +16,17 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const ChatToolBar = ({ className }) => {
+const ChatToolBar = ({ className, onMicIconClick, disabled }) => {
     const classes = useStyles();
     return (
+  
         <AppBar position="fixed" color="primary" className={className}>
             <Toolbar>
-              <Fab color="secondary" aria-label="Add" className={classes.fabButton}>
+              <Fab onClick={onMicIconClick}  
+                    color="secondary" 
+                    aria-label="Mic" 
+                    className={classes.fabButton}
+                    disabled={disabled}>
                   <MicIcon />
               </Fab>
             </Toolbar>
