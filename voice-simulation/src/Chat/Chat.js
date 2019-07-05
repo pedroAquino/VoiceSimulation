@@ -16,14 +16,14 @@ export default function Chat() {
     const classes = useStyles();
     return (
       <ChatContainer>
-        {({ chatState }) => {
+        {({ chatState, addMessage }) => {
           console.log(chatState);
           return (
             <div>
                 <MessageList 
                   {...chatState}
                 />
-                <SpeechContainer>
+                <SpeechContainer onResultRecord={addMessage} >
                   {({ speechState, startRecording }) => {
                     console.log(speechState);
                     return (

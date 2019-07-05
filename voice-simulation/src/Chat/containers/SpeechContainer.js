@@ -5,10 +5,8 @@ class SpeechContainer extends React.Component {
     
     constructor(props) {
         super(props);
-        
         this.speechRecognition = new window.SpeechRecognition();
         this.speechRecognition.onresult = this.handleResultRecord.bind(this);
-
         this.handleStartRecording = this.handleStartRecording.bind(this);
     }
 
@@ -20,8 +18,7 @@ class SpeechContainer extends React.Component {
         this.speechRecognition.start();
         setTimeout(() => {
             this.setState({
-                speaking: true,
-                result: ''
+                speaking: true
             });
         }, 1000);
     }
@@ -29,9 +26,9 @@ class SpeechContainer extends React.Component {
     handleResultRecord(event) {
         const speechToText = event.results[0][0].transcript;
         this.setState({
-            speaking: false,
-            result: speechToText
+            speaking: false
         });
+        this.props.onResultRecord(speechToText);
     }
     
     render() {
