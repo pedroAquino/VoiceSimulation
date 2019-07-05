@@ -1,9 +1,4 @@
-export const messageFactory = ({
-    content = ''
-} = {}) => ({
-    content,
-    id: Date.now()
-});
+import { buildInitialState as messagesFactory } from './messageFactory';
 
 export const chatStateFactory = ({
     messages = [],
@@ -17,9 +12,5 @@ export const chatStateFactory = ({
 
 export const buildInitialState = () => ({
   ...chatStateFactory(),
-  messages: [
-      messageFactory({ content: 
-        ` Hi, I'm the dealertrack assistant, I'm here to help you with the simulation, can we start with the model of ther car you wanna buy ?` 
-      })
-  ]  
+  ...messagesFactory()
 });
