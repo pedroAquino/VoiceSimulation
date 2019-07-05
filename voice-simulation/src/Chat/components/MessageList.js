@@ -16,6 +16,12 @@ const useStyles = makeStyles(theme => ({
         borderRadius: 12,
         position: 'relative',
         marginBottom: 24,
+        '& > p': {
+            marginTop: 4
+        },
+        '& > span': {
+            fontWeight: 'bold'
+        },
         '&:after': {
             content: "''",
             position: 'absolute',
@@ -36,6 +42,12 @@ const useStyles = makeStyles(theme => ({
         position: 'relative',
         marginBottom: 24,
         textTransform: 'capitalize',
+        '& > p': {
+            marginTop: 4
+        },
+        '& > span': {
+            fontWeight: 'bold'
+        },
         '&:after': {
             content: "''",
             position: 'absolute',
@@ -51,8 +63,9 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const Message = ({ content,  className }) =>  (
+const Message = ({ content,  className, from }) =>  (
     <div className={className}>
+        <span>{from === 'DT' ? 'Dealertrack Team:' : 'Mr. Santos'}</span>
         <p>{content}</p>
     </div>
 );
@@ -65,7 +78,8 @@ export default function MessageList({ messages }) {
                 <Message 
                     className={msg.from === 'DT' ? classes.message : classes.messageRight}
                     key={msg.id} 
-                    content={msg.content} 
+                    content={msg.content}
+                    from={msg.from}
                 />
             ))}
         </div>
