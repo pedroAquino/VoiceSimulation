@@ -6,8 +6,8 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-end',
-        minHeight: '100vh',
-        marginTop: -108,
+        height: 'calc(100vh - 108px)',
+        overflowY: 'scroll',
         padding: '0px 24px 0px 24px'
     },
     message: {
@@ -50,11 +50,11 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const Message = ({ content, isVisible, className }) => isVisible ? (
+const Message = ({ content,  className }) =>  (
     <div className={className}>
         <p>{content}</p>
     </div>
-) : null;
+);
 
 export default function MessageList({ messages }) {
     const classes = useStyles();
@@ -65,7 +65,6 @@ export default function MessageList({ messages }) {
                     className={msg.from === 'DT' ? classes.message : classes.messageRight}
                     key={msg.id} 
                     content={msg.content} 
-                    isVisible={msg.isVisible}
                 />
             ))}
         </div>

@@ -17,7 +17,6 @@ export default function Chat() {
     return (
       <ChatContainer>
         {({ chatState, addMessage }) => {
-          console.log(chatState);
           return (
             <div>
                 <MessageList 
@@ -25,7 +24,6 @@ export default function Chat() {
                 />
                 <SpeechContainer onResultRecord={addMessage} >
                   {({ speechState, startRecording }) => {
-                    console.log(speechState);
                     return (
                       <ChatToolBar 
                         className={classes.toolBar}
