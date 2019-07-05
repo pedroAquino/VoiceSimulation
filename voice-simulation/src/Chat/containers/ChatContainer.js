@@ -18,7 +18,8 @@ class ChatContainer extends React.Component {
                 messageFactory({
                     content,
                     id: Date.now(),
-                    isVisible: true
+                    isVisible: true,
+                    from: 'USER'
                 })
             ]
         });

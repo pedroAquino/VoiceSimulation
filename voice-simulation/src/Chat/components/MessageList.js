@@ -15,6 +15,7 @@ const useStyles = makeStyles(theme => ({
         padding: 8,
         borderRadius: 12,
         position: 'relative',
+        marginBottom: 24,
         '&:after': {
             content: "''",
             position: 'absolute',
@@ -26,6 +27,25 @@ const useStyles = makeStyles(theme => ({
             zIndex: 1,
             top: -11,
             left: 10
+        }
+    },
+    messageRight: {
+        background: '#fff',
+        padding: 8,
+        borderRadius: 12,
+        position: 'relative',
+        marginBottom: 24,
+        '&:after': {
+            content: "''",
+            position: 'absolute',
+            borderStyle: 'solid',
+            borderWidth: '0 9px 11px',
+            borderColor: '#fff transparent',
+            display: 'block',
+            width: 0,
+            zIndex: 1,
+            top: -11,
+            right: 10
         }
     }
 }));
@@ -42,10 +62,10 @@ export default function MessageList({ messages }) {
         <div className={classes.root} id="messages">
             { messages.map(msg => (
                 <Message 
-                    className={classes.message}
+                    className={msg.from === 'DT' ? classes.message : classes.messageRight}
                     key={msg.id} 
                     content={msg.content} 
-                    isVisible={msg.isVisible} 
+                    isVisible={msg.isVisible}
                 />
             ))}
         </div>

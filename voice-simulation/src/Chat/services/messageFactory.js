@@ -2,11 +2,13 @@
 export const messageFactory = ({
     content = '',
     id = '',
-    isVisible = false
+    isVisible = false,
+    from = 'DT'
 } = {}) => ({
     content,
     id,
-    isVisible
+    isVisible,
+    from
 });
 
 export const buildInitialState = () => ({
@@ -14,7 +16,8 @@ export const buildInitialState = () => ({
         {
             content: `Hi, I'm the dealertrack assistant, I'm here to help you with the simulation, can we start with the model of ther car you wanna buy ?`,
             id: 'vehicle_model',
-            isVisible: true
+            isVisible: true,
+            from: 'DT'
         }
     ].map(messageFactory)
 })

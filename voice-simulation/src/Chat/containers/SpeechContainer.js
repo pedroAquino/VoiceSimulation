@@ -7,6 +7,8 @@ class SpeechContainer extends React.Component {
         super(props);
         this.speechRecognition = new window.SpeechRecognition();
         this.speechRecognition.onresult = this.handleResultRecord.bind(this);
+        this.speechRecognition.onerror = () => console.log('error');
+        this.speechRecognition.onend = this.handleEndRecord.bind(this);
         this.handleStartRecording = this.handleStartRecording.bind(this);
     }
 
@@ -29,6 +31,12 @@ class SpeechContainer extends React.Component {
             speaking: false
         });
         this.props.onResultRecord(speechToText);
+    }
+
+    handleEndRecord() {
+        this.setState({
+            speaking: false
+        });
     }
     
     render() {
