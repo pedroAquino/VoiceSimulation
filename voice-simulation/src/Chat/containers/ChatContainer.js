@@ -20,7 +20,7 @@ class ChatContainer extends React.Component {
         }
     }
 
-    handleAddMessage(content, from='USER') {
+    handleAddMessage(content, from='USER') {        
         this.setState({
             messages: [
                 ...this.state.messages,
