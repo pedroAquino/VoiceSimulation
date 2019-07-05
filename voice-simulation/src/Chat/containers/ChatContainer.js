@@ -1,13 +1,9 @@
 import React from 'react';
-import  { chatStateFactory, messageFactory } from '../services/chatStateFactory';
+import  { buildInitialState } from '../services/chatStateFactory';
 
 class ChatContainer extends React.Component {
 
-    state = chatStateFactory({
-        messages: messageFactory({
-            content: 'Hello'
-        })
-    });
+    state = buildInitialState();
 
     render() {
         return this.props.children({
