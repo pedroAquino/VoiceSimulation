@@ -2,6 +2,7 @@ import React from 'react';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Chat from './Chat/Chat';
 import 'typeface-roboto';
 
 const theme = createMuiTheme({
@@ -27,7 +28,7 @@ function App() {
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
-      <div />
+      <Chat />
     </MuiThemeProvider>
   );
 }
