@@ -28,7 +28,7 @@ const defaultHeaders = () => ({
 
 export default  {
     postSimulation: (simulation) => axios.post(
-        'http://sirimulation.herokuapp.com/simulation', 
+        'https://sirimulation.herokuapp.com/simulation', 
         simulation,
         defaultHeaders()
     )
