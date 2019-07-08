@@ -41,7 +41,7 @@ export const buildInitialState = () => ({
     ],
     messages: [
         {
-            content: `Hi, I'm the dealertrack assistant, I'm here to help you with the simulation, can we start with the model of ther car you wanna buy ?`,
+            content: `What's the model of the vehicle ?`,
             id: 'vehicle_model',
             from: 'DT'
         }

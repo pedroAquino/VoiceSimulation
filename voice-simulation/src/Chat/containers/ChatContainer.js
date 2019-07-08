@@ -2,7 +2,8 @@ import React from 'react';
 import  { buildInitialState } from '../services/chatStateFactory';
 import { messageFactory, getNextMessage } from '../services/messageFactory';
 import { getLast } from '../../shared/helpers/arrayHelper';
-import { simulationFactory } from '../services/simulationFactory';
+import { simulationFactory, simulationResponseFactory } from '../services/simulationFactory';
+import simulationApi from '../services/simulationApi';
 
 class ChatContainer extends React.Component {
 
@@ -53,8 +54,23 @@ class ChatContainer extends React.Component {
     handleSimulation() {
         const simulation = simulationFactory()
             .fromMessages(this.state.messages);
-        
-        console.log('SIMULATION', simulation);
+        simulationApi
+            .postSimulation(simulation)
+            .then(result => {
+                //debugger;
+                const simulationResponse = simulationResponseFactory(result.data.Simulation);
+                this.setState({
+                    currentMessage: { id: 'last_message' },
+                    messages: [
+                        ...this.state.messages,
+                        messageFactory({
+                            content: simulationResponse.toString(),
+                            id: Date.now(),
+                            from: 'DT'
+                        })
+                    ]
+                });
+            });
     }
 
     render() {

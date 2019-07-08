@@ -17,3 +17,14 @@ export const simulationFactory = ({
         });
     }
 });
+
+export const simulationResponseFactory = ({
+    Terms,
+    TermsPrice,
+} = {}) => ({
+    Terms,
+    TermsPrice,
+    toString() {
+        return `This is the result of the simulation with Itau Bank: ${this.Terms}x of R$ ${this.TermsPrice}`;
+    }
+});
