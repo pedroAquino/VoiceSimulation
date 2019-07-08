@@ -39,8 +39,8 @@ export const simulationFactory = ({
 });
 
 export const simulationResponseFactory = ({
-    Terms,
-    TermsPrice,
+    Terms = 0,
+    TermsPrice = 0,
 } = {}) => ({
     Terms,
     TermsPrice,
