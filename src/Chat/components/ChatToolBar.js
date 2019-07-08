@@ -16,13 +16,18 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const toolbarRef = React.createRef();
+
 const ChatToolBar = ({ className, onMicIconClick, disabled }) => {
     const classes = useStyles();
     return (
-  
-        <AppBar position="fixed" color="primary" className={className}>
+        <AppBar ref={toolbarRef} tabIndex={0} position="fixed" color="primary" className={className}>
             <Toolbar>
-              <Fab onClick={onMicIconClick}  
+              <Fab 
+                    onClick={() => {
+                      toolbarRef.current.focus();
+                      onMicIconClick();
+                    }}  
                     color="secondary" 
                     aria-label="Mic" 
                     className={classes.fabButton}

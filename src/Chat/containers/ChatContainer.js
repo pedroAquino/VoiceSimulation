@@ -66,7 +66,6 @@ class ChatContainer extends React.Component {
         simulationApi
             .postSimulation(simulation)
             .then(result => {
-                debugger;
                 const simulationResponse = simulationResponseFactory()
                     .fromApiResponse(result.data.data);
                 this.setState({
