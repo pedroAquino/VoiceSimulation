@@ -53,11 +53,13 @@ class ChatContainer extends React.Component {
 
     handleSimulation() {
         const simulation = simulationFactory()
-            .fromMessages(this.state.messages);
+            .fromMessages(this.state.messages)
+            .toApi();
         simulationApi
             .postSimulation(simulation)
             .then(result => {
-                const simulationResponse = simulationResponseFactory(result.data.Simulation);
+                const simulationResponse = simulationResponseFactory()
+                    .fromApiResponse(result.data);
                 this.setState({
                     currentMessage: { id: 'last_message' },
                     messages: [

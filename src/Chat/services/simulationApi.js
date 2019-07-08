@@ -1,20 +1,35 @@
+import axios from 'axios';
 
-const mock = {
-    status: 200,
-    data: {
-        'Simulation': {
-            Terms: 48,
-            TermsPrice: 620,
-        }
-    }
+export const API_BODY_TEMPLATE = {
+   "jsonapi":{
+      "version":"1.0"
+   },
+   "meta":{
+      "LenderCode":"bankb",
+      "TransactionId":"KpSz_NBS10Zi2e9SoXGntiFd",
+      "TransactionType":"EstimatePayment"
+   },
+   "data": {
+      "Customer":{
+
+      },
+      "Dealership":{
+
+      }
+   }
 };
 
-//const errorMock = {};
+const defaultHeaders = () => ({
+    headers: {
+        'Accept': '*/*',
+        'Content-Type': 'application/json'
+    }
+})
 
 export default  {
-    postSimulation: (simulation) => new Promise(
-        (resolve, reject) => setTimeout(() => {
-            resolve(mock);
-        }, 2000)
-    )  
+    postSimulation: (simulation) => axios.post(
+        'http://sirimulation.herokuapp.com/simulation', 
+        simulation,
+        defaultHeaders()
+    )
 };
