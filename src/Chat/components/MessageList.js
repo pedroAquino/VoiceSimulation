@@ -68,24 +68,27 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const Message = ({ content,  className, from }) =>  (
-    <div className={className}>
-        <span>{from === 'DT' ? 'Dealertrack Team:' : 'Mr. Santos'}</span>
+const Message = ({ content,  className, from, msgRef, tabIndex }) =>  (
+    <div tabIndex={tabIndex} ref={msgRef} className={className}>
+        <span>{from === 'DT' ? 'Dealertrack Team' : 'Mr. Santos'} says:</span>
         <p>{content}</p>
     </div>
 );
 
 export default function MessageList({ messages }) {
     const classes = useStyles();
+    //console.log(messages);
     return (
         <div className={classes.root}>
             <div className={classes.messages} id="messages">
-                { messages.map(msg => (
+                { messages.map((msg, index) => (
                     <Message 
                         className={msg.from === 'DT' ? classes.message : classes.messageRight}
                         key={msg.id} 
                         content={msg.content}
                         from={msg.from}
+                        msgRef={msg.ref}
+                        tabIndex={index}
                     />
                 ))}
             </div>

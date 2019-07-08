@@ -1,3 +1,4 @@
+import React from 'react';
 
 export const messageFactory = ({
     content = '',
@@ -6,7 +7,8 @@ export const messageFactory = ({
 } = {}) => ({
     content,
     id,
-    from
+    from,
+    ref: React.createRef()
 });
 
 export const getNextMessage = (chatState) => {
@@ -38,7 +40,7 @@ export const buildInitialState = () => ({
             id: 'vehicle_doing_simulation',
             from: 'DT'
         }
-    ],
+    ].map(messageFactory),
     messages: [
         {
             content: `What's the model of the vehicle ?`,
@@ -46,8 +48,8 @@ export const buildInitialState = () => ({
             from: 'DT'
         }
     ].map(messageFactory),
-    currentMessage:  {
+    currentMessage: messageFactory({
         id: 'vehicle_model',
         from: 'DT'
-    }
+    })
 });
