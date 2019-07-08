@@ -29,7 +29,7 @@ export const buildInitialState = () => ({
             from: 'DT'
         },
         {
-            content: `What's the value of the entrance ?`,
+            content: `What's the value of the down payment ?`,
             id: 'vehicle_down_payment',
             from: 'DT'
         },

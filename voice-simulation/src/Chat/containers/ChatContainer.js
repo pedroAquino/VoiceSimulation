@@ -2,6 +2,7 @@ import React from 'react';
 import  { buildInitialState } from '../services/chatStateFactory';
 import { messageFactory, getNextMessage } from '../services/messageFactory';
 import { getLast } from '../../shared/helpers/arrayHelper';
+import { simulationFactory } from '../services/simulationFactory';
 
 class ChatContainer extends React.Component {
 
@@ -21,7 +22,7 @@ class ChatContainer extends React.Component {
         }
 
         if (getLast(this.state.messages).id === 'vehicle_doing_simulation') {
-            console.log('DO SIMULATION !!!');
+            this.handleSimulation();
         }
     }
 
@@ -47,6 +48,13 @@ class ChatContainer extends React.Component {
                 nextMessage
             ]
         })
+    }
+
+    handleSimulation() {
+        const simulation = simulationFactory()
+            .fromMessages(this.state.messages);
+        
+        console.log('SIMULATION', simulation);
     }
 
     render() {
