@@ -16,6 +16,10 @@ class ChatContainer extends React.Component {
     state = buildInitialState();
 
     componentDidUpdate(prevProps, prevState) {
+         if (this.state.messages.length > prevState.messages.length) {
+             this.handleFocus();
+         }
+        
         if (this.state.messages.length > prevState.messages.length &&
             this.state.currentMessage.id === prevState.currentMessage.id
             ) {
@@ -25,6 +29,10 @@ class ChatContainer extends React.Component {
         if (getLast(this.state.messages).id === 'vehicle_doing_simulation') {
             this.handleSimulation();
         }
+    }
+
+    componentDidMount() {
+        this.handleFocus();
     }
 
     handleAddMessage(content, from='USER') {        
@@ -70,6 +78,11 @@ class ChatContainer extends React.Component {
                     ]
                 });
             });
+    }
+
+    handleFocus() {
+        const lastMessageRef = getLast(this.state.messages).ref;
+        lastMessageRef.current.focus();
     }
 
     render() {
