@@ -4,9 +4,14 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
+        flexDirection: 'column-reverse',
+        minHeight: '100vh'
+    },
+    messages: {
+        display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-end',
-        height: 'calc(100vh - 108px)',
+        marginBottom: 108,
         overflowY: 'scroll',
         padding: '0px 24px 0px 24px'
     },
@@ -73,15 +78,17 @@ const Message = ({ content,  className, from }) =>  (
 export default function MessageList({ messages }) {
     const classes = useStyles();
     return (
-        <div className={classes.root} id="messages">
-            { messages.map(msg => (
-                <Message 
-                    className={msg.from === 'DT' ? classes.message : classes.messageRight}
-                    key={msg.id} 
-                    content={msg.content}
-                    from={msg.from}
-                />
-            ))}
+        <div className={classes.root}>
+            <div className={classes.messages} id="messages">
+                { messages.map(msg => (
+                    <Message 
+                        className={msg.from === 'DT' ? classes.message : classes.messageRight}
+                        key={msg.id} 
+                        content={msg.content}
+                        from={msg.from}
+                    />
+                ))}
+            </div>
         </div>
     );
 };
