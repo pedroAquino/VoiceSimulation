@@ -1,6 +1,7 @@
 import React from 'react';
 import  { buildInitialState } from '../services/chatStateFactory';
 import { messageFactory, getNextMessage } from '../services/messageFactory';
+import { getLast } from '../../shared/helpers/arrayHelper';
 
 class ChatContainer extends React.Component {
 
@@ -17,6 +18,10 @@ class ChatContainer extends React.Component {
             this.state.currentMessage.id === prevState.currentMessage.id
             ) {
                 this.handleNextMessage();
+        }
+
+        if (getLast(this.state.messages).id === 'vehicle_doing_simulation') {
+            console.log('DO SIMULATION !!!');
         }
     }
 
