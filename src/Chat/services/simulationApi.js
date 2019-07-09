@@ -19,6 +19,8 @@ export const API_BODY_TEMPLATE = {
    }
 };
 
+//const URL = 'http://localhost:5000';
+const URL = 'http://sirimulation.herokuapp.com';
 const defaultHeaders = () => ({
     headers: {
         'Accept': '*/*',
@@ -28,7 +30,7 @@ const defaultHeaders = () => ({
 
 export default  {
     postSimulation: (simulation) => axios.post(
-        'https://sirimulation.herokuapp.com/simulation', 
+        `${URL}/simulation`,
         simulation,
         defaultHeaders()
     )
